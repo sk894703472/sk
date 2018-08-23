@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <style type="text/css">
+            .title{
+                text-align: center;
+                font-size: 30px;
+                font-weight: 700;
+            }
+        </style>
+    </head>
+    <body>
+        <p class="title">用户管理</p>
+        <div class="content">
+            <table border="1" cellpadding="10" cellspacing="0" bordercolor="pink" align="center">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>姓名</th>
+                        <th>密码</th>
+                        <th>信息修改</th>
+                        <th>信息删除</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach items="${sessionScope.result }" var="user">
+                        <tr>
+                            <td>${user.id }</td>
+                            <td>${user.name }</td>
+                            <td>${user.password }</td>
+                            <td>修改</td>
+                            <td>删除</td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </div>
+    	<form action="${pageContext.request.contextPath }/product/add" method="post">
+            <table align="center">
+                <tr>
+                    <td colspan="2"><input type="hidden" name="flag" value="add"/></td>
+                </tr>
+                <tr>
+                    <td>姓名:</td>
+                    <td>
+                        <input type="text" name="name"/>
+                        <font color="red">必填</font>
+                    </td>
+                </tr>
+                <tr>
+                    <td>密码:</td>
+                    <td>
+                        <input type="text" name="price"/>
+                        <font color="red">必填,请输入有效数字</font>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="提交"/></td>
+                    <td><input type="reset" value="重置"/></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
